@@ -3,10 +3,10 @@ using Xunit;
 
 namespace ArgsDotNet.Tests
 {
-    public class LearningTest
+    public class ArgsTests
     {
         [Fact]
-        public void MainTest()
+        public void TestFromCleanCodeBook()
         {
             string[] args = new[] { "-l", "true", "-d", "test", "-p", "42" };
             var argsParser = new Args("l,p#,d*", args);
@@ -51,6 +51,28 @@ namespace ArgsDotNet.Tests
             var integerArgument = argsParser.GetInt('i');
 
             Assert.Equal(123, integerArgument);
+        }
+
+        [Fact]
+        public void GivenPassedDoubleArgument_WhenGetDouble_ThenReturnDouble()
+        {
+            var args = new[] { "-d", "12,34" };
+            var argsParser = new Args("d##", args);
+
+            var doubleArgument = argsParser.GetDouble('d');
+
+            Assert.Equal(12.34d, doubleArgument);
+        }
+
+        [Fact]
+        public void GivenPassedStringArgument_WhenGetString_ThenReturnStringArray()
+        {
+            var args = new[] { "-s", "one", "two", "-b" };
+            var argsParser = new Args("s[*],b", args);
+
+            var stringArrayArgument = argsParser.GetStringArray('s');
+
+            Assert.Equal(new[] { "one", "two" }, stringArrayArgument);
         }
     }
 }

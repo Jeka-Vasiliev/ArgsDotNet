@@ -35,5 +35,17 @@ namespace ArgsDotNet
         {
             throw new NotImplementedException();
         }
+
+        internal enum ErrorCode
+        {
+            INVALID_ARGUMENT_FORMAT,
+            INVALID_ARGUMENT_NAME,
+            UNEXPECTED_ARGUMENT,
+            MISSING_INTEGER,
+            INVALID_INTEGER,
+            MISSING_STRING,
+            MISSING_DOUBLE,
+            INVALID_DOUBLE
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ArgsDotNet.Marchalers;
 using System;
 using System.Collections.Generic;
+using static ArgsDotNet.ArgsException;
 
 namespace ArgsDotNet
 {
@@ -112,6 +113,16 @@ namespace ArgsDotNet
         public string GetString(char arg)
         {
             return StringArgumentMarshaler.GetValue(marshalers[arg]);
+        }
+
+        public double GetDouble(char arg)
+        {
+            return DoubleArgumentMarshaler.GetValue(marshalers[arg]);
+        }
+
+        public string[] GetStringArray(char arg)
+        {
+            return StringArrayArgumentMarshaler.GetValue(marshalers[arg]);
         }
 
     }
