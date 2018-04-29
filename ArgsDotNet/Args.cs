@@ -89,7 +89,7 @@ namespace ArgsDotNet
                 }
                 catch (ArgsException e)
                 {
-                    e.SetErrorArgumentId(argChar);
+                    e.ErrorArgumentId = argChar;
                     throw e;
                 }
             }
