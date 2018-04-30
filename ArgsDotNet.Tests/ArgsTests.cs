@@ -75,12 +75,21 @@ namespace ArgsDotNet.Tests
         }
 
         [Fact]
-        public void TestSpacesinFormat()
+        public void TestSpacesInFormat()
         {
             var args = new Args("x, y", new[] { "-xy" });
             args.Cardinality.Should().Be(2);
             args.GetBoolean('x').Should().BeTrue();
             args.GetBoolean('y').Should().BeTrue();
+        }
+
+        [Fact]
+        public void TestSimpleIntPresent()
+        {
+            var args = new Args("x#", new[] { "-x", "42" });
+            args.Cardinality.Should().Be(1);
+            args.Has('x').Should().BeTrue();
+            args.GetInt('x').Should().Be(42);
         }
 
         [Fact]
