@@ -26,5 +26,12 @@ namespace ArgsDotNet.Tests
             var e = new ArgsException(ErrorCode.INVALID_INTEGER, 'x', "Forty two");
             e.ToString().Should().Be("Argument -x expects an integer but was 'Forty two'.");
         }
+
+        [Fact]
+        public void TestMissingIntegerMessage()
+        {
+            var e = new ArgsException(ErrorCode.MISSING_INTEGER, 'x', "Forty two");
+            e.ToString().Should().Be("Could not find integer parameter for -x.");
+        }
     }
 }
