@@ -54,7 +54,7 @@ namespace ArgsDotNet
                 case ErrorCode.INVALID_DOUBLE:
                     return $"Argument -{ErrorArgumentId} expects a double but was '{ErrorParameter}'.";
                 case ErrorCode.MISSING_DOUBLE:
-                    return $"Could not find double parameter for {ErrorArgumentId}";
+                    return $"Could not find double parameter for -{ErrorArgumentId}.";
                 case ErrorCode.INVALID_ARGUMENT_NAME:
                     return $"{ErrorArgumentId} is not valid argument name";
                 case ErrorCode.INVALID_ARGUMENT_FORMAT:

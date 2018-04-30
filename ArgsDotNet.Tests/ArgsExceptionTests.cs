@@ -30,7 +30,7 @@ namespace ArgsDotNet.Tests
         [Fact]
         public void TestMissingIntegerMessage()
         {
-            var e = new ArgsException(ErrorCode.MISSING_INTEGER, 'x', "Forty two");
+            var e = new ArgsException(ErrorCode.MISSING_INTEGER, 'x', null);
             e.ToString().Should().Be("Could not find integer parameter for -x.");
         }
 
@@ -39,6 +39,13 @@ namespace ArgsDotNet.Tests
         {
             var e = new ArgsException(ErrorCode.INVALID_DOUBLE, 'x', "Forty two");
             e.ToString().Should().Be("Argument -x expects a double but was 'Forty two'.");
+        }
+
+        [Fact]
+        public void TestMissingDoubleMessage()
+        {
+            var e = new ArgsException(ErrorCode.MISSING_DOUBLE, 'x', null);
+            e.ToString().Should().Be("Could not find double parameter for -x.");
         }
     }
 }
