@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using static ArgsDotNet.ArgsException;
 
 namespace ArgsDotNet.Marchalers
@@ -12,7 +13,7 @@ namespace ArgsDotNet.Marchalers
         {
             var argValue = currentArgument.Next?.Value
                 ?? throw new ArgsException(ErrorCode.MISSING_DOUBLE);
-            if (!double.TryParse(argValue, out doubleValue))
+            if (!double.TryParse(argValue, NumberStyles.Any, CultureInfo.InvariantCulture, out doubleValue))
                 throw new ArgsException(ErrorCode.INVALID_DOUBLE);
         }
 
