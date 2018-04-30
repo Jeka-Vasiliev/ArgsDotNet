@@ -46,7 +46,7 @@ namespace ArgsDotNet
                 case ErrorCode.UNEXPECTED_ARGUMENT:
                     return $"Argument -{ErrorArgumentId} unexpected.";
                 case ErrorCode.MISSING_STRING:
-                    return $"Could not find string parameter for {ErrorArgumentId}";
+                    return $"Could not find string parameter for -{ErrorArgumentId}.";
                 case ErrorCode.INVALID_INTEGER:
                     return $"Argument {ErrorArgumentId} expects an integer but was {ErrorParameter}";
                 case ErrorCode.MISSING_INTEGER:
