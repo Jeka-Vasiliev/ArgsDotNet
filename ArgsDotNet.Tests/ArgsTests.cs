@@ -1,10 +1,34 @@
+using FluentAssertions;
 using System;
 using Xunit;
+using static ArgsDotNet.ArgsException;
 
 namespace ArgsDotNet.Tests
 {
     public class ArgsTests
     {
+        [Fact]
+        public void TestWithNoSchemaButWithnoSchemaOrArguments()
+        {
+            var args = new Args("", new string[0]);
+            args.Cardinality.Should().Be(0);
+        }
+
+        [Fact]
+        public void TestWithNoSchemaButWithOneArgument()
+        {
+            Action act = () => { new Args("", new[] { "-x" }); };
+            var exception = act.Should().Throw<ArgsException>().And;
+            exception.Code.Should().Be(ErrorCode.UNEXPECTED_ARGUMENT);
+            exception.ErrorArgumentId.Should().Be('x');
+        }
+
+        [Fact]
+        public void TestWithNoSchemaButWithMultipleArguments()
+        {
+
+        }
+
         [Fact]
         public void TestFromCleanCodeBook()
         {

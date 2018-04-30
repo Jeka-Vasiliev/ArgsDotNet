@@ -10,6 +10,8 @@ namespace ArgsDotNet
         private IDictionary<char, IArgumentMarshaler> marshalers = new Dictionary<char, IArgumentMarshaler>();
         private ISet<char> argsFound = new HashSet<char>();
 
+        public int Cardinality { get => argsFound.Count; }
+
         public Args(string schema, string[] args)
         {
             ParseSchema(schema);
@@ -75,23 +77,19 @@ namespace ArgsDotNet
 
         private void ParseArgumentCharacter(char argChar, LinkedListNode<string> argument)
         {
-            var m = marshalers[argChar];
-            if (m == null)
-            {
+            var isMarshalerFound = marshalers.TryGetValue(argChar, out var marshaler);
+            if (!isMarshalerFound)
                 throw new ArgsException(ErrorCode.UNEXPECTED_ARGUMENT, argChar, null);
-            }
-            else
+
+            argsFound.Add(argChar);
+            try
             {
-                argsFound.Add(argChar);
-                try
-                {
-                    m.Set(argument);
-                }
-                catch (ArgsException e)
-                {
-                    e.ErrorArgumentId = argChar;
-                    throw e;
-                }
+                marshaler.Set(argument);
+            }
+            catch (ArgsException e)
+            {
+                e.ErrorArgumentId = argChar;
+                throw e;
             }
         }
 

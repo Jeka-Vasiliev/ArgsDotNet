@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace ArgsDotNet
 {
     [Serializable]
-    internal class ArgsException : Exception
+    public class ArgsException : Exception
     {
         public ErrorCode Code { get; set; }
         public char ErrorArgumentId { get; set; }
@@ -58,7 +58,7 @@ namespace ArgsDotNet
             }
         }
 
-        internal enum ErrorCode
+        public enum ErrorCode
         {
             UNEXPECTED_ARGUMENT,
             MISSING_STRING,
