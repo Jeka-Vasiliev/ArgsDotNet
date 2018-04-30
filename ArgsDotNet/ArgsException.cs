@@ -52,7 +52,7 @@ namespace ArgsDotNet
                 case ErrorCode.MISSING_INTEGER:
                     return $"Could not find integer parameter for -{ErrorArgumentId}.";
                 case ErrorCode.INVALID_DOUBLE:
-                    return $"Argument {ErrorArgumentId} expects a double but was {ErrorParameter}";
+                    return $"Argument -{ErrorArgumentId} expects a double but was '{ErrorParameter}'.";
                 case ErrorCode.MISSING_DOUBLE:
                     return $"Could not find double parameter for {ErrorArgumentId}";
                 case ErrorCode.INVALID_ARGUMENT_NAME:
