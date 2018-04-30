@@ -147,5 +147,14 @@ namespace ArgsDotNet.Tests
             args.Has('x').Should().BeTrue();
             args.GetStringArray('x').Should().Equal("first", "second");
         }
+
+        [Fact]
+        public void TestEmptyStringArrayPresent()
+        {
+            var args = new Args("x[*]", new[] { "-x" });
+            args.Cardinality.Should().Be(1);
+            args.Has('x').Should().BeTrue();
+            args.GetStringArray('x').Should().BeEmpty();
+        }
     }
 }
