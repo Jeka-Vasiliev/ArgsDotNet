@@ -129,5 +129,14 @@ namespace ArgsDotNet.Tests
             exception.ErrorArgumentId.Should().Be('x');
             exception.ErrorParameter.Should().Be("Fourty two");
         }
+
+        [Fact]
+        public void TestMissingDouble()
+        {
+            Action act = () => { new Args("x##", new[] { "-x" }); };
+            var exception = act.Should().Throw<ArgsException>().And;
+            exception.Code.Should().Be(ErrorCode.MISSING_DOUBLE);
+            exception.ErrorArgumentId.Should().Be('x');
+        }
     }
 }
