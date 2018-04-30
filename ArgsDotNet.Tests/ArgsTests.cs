@@ -138,5 +138,14 @@ namespace ArgsDotNet.Tests
             exception.Code.Should().Be(ErrorCode.MISSING_DOUBLE);
             exception.ErrorArgumentId.Should().Be('x');
         }
+
+        [Fact]
+        public void TestSimpleStringArrayPresent()
+        {
+            var args = new Args("x[*]", new[] { "-x", "first", "second" });
+            args.Cardinality.Should().Be(1);
+            args.Has('x').Should().BeTrue();
+            args.GetStringArray('x').Should().Equal("first", "second");
+        }
     }
 }
