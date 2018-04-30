@@ -103,6 +103,15 @@ namespace ArgsDotNet.Tests
         }
 
         [Fact]
+        public void TestMissingInteger()
+        {
+            Action act = () => { new Args("x#", new[] { "-x" }); };
+            var exception = act.Should().Throw<ArgsException>().And;
+            exception.Code.Should().Be(ErrorCode.MISSING_INTEGER);
+            exception.ErrorArgumentId.Should().Be('x');
+        }
+
+        [Fact]
         public void TestFromCleanCodeBook()
         {
             string[] args = new[] { "-l", "true", "-d", "test", "-p", "42" };
