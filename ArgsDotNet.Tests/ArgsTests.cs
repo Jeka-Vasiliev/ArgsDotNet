@@ -93,6 +93,16 @@ namespace ArgsDotNet.Tests
         }
 
         [Fact]
+        public void TestInvalidInteger()
+        {
+            Action act = () => { new Args("x#", new[] { "-x", "Fourty two" }); };
+            var exception = act.Should().Throw<ArgsException>().And;
+            exception.Code.Should().Be(ErrorCode.INVALID_INTEGER);
+            exception.ErrorArgumentId.Should().Be('x');
+            exception.ErrorParameter.Should().Be("Fourty two");
+        }
+
+        [Fact]
         public void TestFromCleanCodeBook()
         {
             string[] args = new[] { "-l", "true", "-d", "test", "-p", "42" };

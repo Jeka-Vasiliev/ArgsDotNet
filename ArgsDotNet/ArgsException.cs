@@ -15,6 +15,12 @@ namespace ArgsDotNet
             Code = code;
         }
 
+        public ArgsException(ErrorCode code, string errorParameter)
+        {
+            Code = code;
+            ErrorParameter = errorParameter;
+        }
+
         public ArgsException(string message) : base(message)
         {
         }

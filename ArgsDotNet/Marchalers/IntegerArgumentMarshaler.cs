@@ -11,7 +11,7 @@ namespace ArgsDotNet.Marchalers
             var argValue = currentArgument.Next?.Value
                 ?? throw new ArgsException(ArgsException.ErrorCode.MISSING_INTEGER);
             if (!int.TryParse(argValue, out integerValue))
-                throw new ArgsException(ArgsException.ErrorCode.INVALID_INTEGER);
+                throw new ArgsException(ArgsException.ErrorCode.INVALID_INTEGER, argValue);
         }
 
         internal static int GetValue(IArgumentMarshaler argumentMarshaler)
