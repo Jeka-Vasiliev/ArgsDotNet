@@ -14,7 +14,7 @@ namespace ArgsDotNet.Marchalers
             var argValue = currentArgument.Next?.Value
                 ?? throw new ArgsException(ErrorCode.MISSING_DOUBLE);
             if (!double.TryParse(argValue, NumberStyles.Any, CultureInfo.InvariantCulture, out doubleValue))
-                throw new ArgsException(ErrorCode.INVALID_DOUBLE);
+                throw new ArgsException(ErrorCode.INVALID_DOUBLE, argValue);
         }
 
         internal static double GetValue(IArgumentMarshaler argumentMarshaler)

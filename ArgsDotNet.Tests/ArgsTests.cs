@@ -120,5 +120,14 @@ namespace ArgsDotNet.Tests
             args.GetDouble('x').Should().BeApproximately(42.3, .001);
         }
 
+        [Fact]
+        public void TestInvalidDouble()
+        {
+            Action act = () => { new Args("x##", new[] { "-x", "Fourty two" }); };
+            var exception = act.Should().Throw<ArgsException>().And;
+            exception.Code.Should().Be(ErrorCode.INVALID_DOUBLE);
+            exception.ErrorArgumentId.Should().Be('x');
+            exception.ErrorParameter.Should().Be("Fourty two");
+        }
     }
 }
