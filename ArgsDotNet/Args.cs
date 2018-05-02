@@ -1,5 +1,4 @@
-﻿using ArgsDotNet.Marchalers;
-using System;
+﻿using ArgsDotNet.Marshalers;
 using System.Collections.Generic;
 using static ArgsDotNet.ArgsException;
 

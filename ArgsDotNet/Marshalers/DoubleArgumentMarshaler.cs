@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using static ArgsDotNet.ArgsException;
 
-namespace ArgsDotNet.Marchalers
+namespace ArgsDotNet.Marshalers
 {
     internal class DoubleArgumentMarshaler : IArgumentMarshaler
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ArgsDotNet.Marchalers
+namespace ArgsDotNet.Marshalers
 {
     internal class IntegerArgumentMarshaler : IArgumentMarshaler
     {
